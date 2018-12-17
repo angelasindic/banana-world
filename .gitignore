@@ -3,8 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# PyBuilder
+# ide
 target/
+.idea/
+*.iml
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -20,3 +22,4 @@ results/
 # unity env
 unity-environment.log
 Banana_Linux/
+Banana.app/
