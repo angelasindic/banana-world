@@ -50,6 +50,18 @@ The plot shows the rewards per episode and a running mean with a window of 100.
 
 ## Ideas for Future Work
 
-Besides of tuning other hyperparametes including network architecture, variations of the DQN could be implemented:
-- [Double Q-learning](https://arxiv.org/abs/1509.06461)
-- [Prioritized Experienced Replay](https://arxiv.org/abs/1511.05952)
+Besides of tuning other hyperparametes including network architecture, variations of the DQN could be implemented.
+
+One known issue of DQN is that under certain conditions it tends to overestimate action values. 
+
+For example, at the beginning of the training, the estimated action values still differ a lot from the true values. But those estimates with potential high error are chosen with the highest priority due to the fact of the update formula, that chooses the action with the maximum Q-value.
+This could dramatically slow down the agent's learning performance.
+
+A solution to this problem was addressed by [Double DQN](https://arxiv.org/abs/1509.06461) that has shown to reduce overoptimism of DQN.
+The basic idea is to break up the maximum update operation into two parts: one that selects the maximizing action and the other that estimates the Q-value of that action.
+Two independently trained Q-Networks are used for each part, one randomly chosen network gets updated at a time.
+
+Double DQN would be only a minor enhancement of the already implemented DQN due to the fact that the latter makes already use of a separated target Q-Network.
+
+The result should show a decreased number of episodes to achieve the required reward of +13.
+
